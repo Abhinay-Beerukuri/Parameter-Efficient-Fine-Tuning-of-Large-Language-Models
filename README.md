@@ -8,8 +8,8 @@ conducted at IIT Kharagpur under the guidance of Prof. Pawan Goyal and Prof. Ari
 The project systematically evaluates multiple Parameter-Efficient Fine-Tuning (PEFT) methods
 —including LoRA, QLoRA, AdaLoRA, LoHa, LoKr, IA³, Prefix Tuning, and P-Tuning v2—
 on two major NLP tasks:
-1. **Summarization** [BillSum dataset](https://huggingface.co/datasets/Abhinay123/billsum-summarization-filtered3)
-2. **Classification** [dair-ai/emotion dataset](https://huggingface.co/datasets/dair-ai/emotion)
+1. **Summarization :**  [BillSum dataset](https://huggingface.co/datasets/Abhinay123/billsum-summarization-filtered3)
+2. **Classification :** [dair-ai/emotion dataset](https://huggingface.co/datasets/dair-ai/emotion)
 
 ## 🚀 Models & Hugging Face Links
 | Task            | Model               | PEFT Method | Link |
