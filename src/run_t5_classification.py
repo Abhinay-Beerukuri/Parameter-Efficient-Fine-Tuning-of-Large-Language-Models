@@ -54,59 +54,63 @@ from peft import IA3Model, IA3Config
 
 # Prepare PEFT
 if config.USE_PEFT:
+    # Example: LoRA
     # peft_config = LoraConfig(
     #     task_type=TaskType.SEQ_CLS,
     #     inference_mode=False,
-    #     r=config.PEFT_CONFIG["r"],
-    #     lora_alpha=config.PEFT_CONFIG["lora_alpha"],
-    #     lora_dropout=config.PEFT_CONFIG["lora_dropout"],
-    #     target_modules=config.PEFT_CONFIG["target_modules"]
+    #     r=8,
+    #     lora_alpha=16,
+    #     lora_dropout=0.1,
+    #     target_modules=["q", "v"]
     # )
 
-
+    # Example: LoHa
     # peft_config = LoHaConfig(
     #     task_type=TaskType.SEQ_CLS,
-    #     r=config.PEFT_CONFIG["r"],
-    #     alpha=config.PEFT_CONFIG["lora_alpha"],
-    #     module_dropout=config.PEFT_CONFIG["lora_dropout"],
-    #     target_modules=config.PEFT_CONFIG["target_modules"]
+    #     r=8,
+    #     alpha=16,
+    #     module_dropout=0.1,
+    #     target_modules=["q", "v"]
     # )
 
-
-
-# 
-
+    # Example: LoKr
     # peft_config = LoKrConfig(
     #     task_type=TaskType.SEQ_CLS,
-    #     r=config.PEFT_CONFIG["r"],
-    #     alpha=config.PEFT_CONFIG["lora_alpha"],
-    #     module_dropout=config.PEFT_CONFIG["lora_dropout"],
-    #     target_modules=config.PEFT_CONFIG["target_modules"]
-    #     #modules_to_save=["classifier"],
+    #     r=8,
+    #     alpha=16,
+    #     module_dropout=0.1,
+    #     target_modules=["q", "v"]
+    #     # modules_to_save=["classifier"],
     # )
 
-    # 
-
+    # Example: AdaLoRA
     # peft_config = AdaLoraConfig(
     #     task_type=TaskType.SEQ_CLS,
-    #     r=config.PEFT_CONFIG["r"],
+    #     r=8,
     #     init_r=12,
     #     tinit=50,
     #     tfinal=300,
     #     deltaT=10,
-    #     target_modules=config.PEFT_CONFIG["target_modules"],
+    #     target_modules=["q", "v"],
     #     total_step=2000
     # )
 
+    # Example: IA3
     peft_config = IA3Config(
-    peft_type="IA3",
-    task_type=TaskType.SEQ_CLS,
-    target_modules=config.PEFT_CONFIG["target_modules"],
-    #feedforward_modules=["w0"],
+        peft_type="IA3",
+        task_type=TaskType.SEQ_CLS,
+        target_modules=["q", "v"],
+        # feedforward_modules=["w0"],
     )
 
-    # peft_config = PromptEncoderConfig(peft_type="P_TUNING",task_type=TaskType.SEQ_CLS, num_virtual_tokens=1000, encoder_hidden_size=628)
-
+    # Example: P-Tuning / Prompt Encoder
+    # peft_config = PromptEncoderConfig(
+    #     peft_type="P_TUNING",
+    #     task_type=TaskType.SEQ_CLS,
+    #     num_virtual_tokens=1000,
+    #     encoder_hidden_size=628
+    # )
+    
     tokenizer = T5Tokenizer.from_pretrained(config.MODEL_NAME)
     model = T5ForConditionalGeneration.from_pretrained(config.MODEL_NAME)
 
@@ -118,10 +122,10 @@ if config.USE_QLORA:
     peft_config = LoraConfig(
         task_type=TaskType.SEQ_CLS,
         inference_mode=False,
-        r=config.PEFT_CONFIG["r"],
-        lora_alpha=config.PEFT_CONFIG["lora_alpha"],
-        lora_dropout=config.PEFT_CONFIG["lora_dropout"],
-        target_modules=config.PEFT_CONFIG["target_modules"]
+        r=8,
+        lora_alpha=16,
+        lora_dropout=0.1,
+        target_modules=["q", "v"]
     )
 
     bnb_config = BitsAndBytesConfig(
@@ -141,7 +145,6 @@ if config.USE_QLORA:
     
     model.print_trainable_parameters()
     model.config.quantization_config = {}
-
 
 
 # Load dataset
@@ -317,4 +320,3 @@ def evaluate_model():
 
 
 train()
-
