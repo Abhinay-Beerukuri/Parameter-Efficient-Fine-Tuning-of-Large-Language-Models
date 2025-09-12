@@ -22,7 +22,7 @@ The model checkpoints for summarization (finetuning on the BillSum dataset) can 
 **Classification Models** 
 
 The model checkpoints for classification (trained on the dair-ai/emotion dataset) can be found here:
-👉 [Hugging Face – Summarization PEFT Models](https://huggingface.co/Abhinay123/classification_peft_models)
+👉 [Hugging Face – classification PEFT Models](https://huggingface.co/Abhinay123/classification_peft_models)
 
 Each folder within these repositories corresponds to a different PEFT technique (LoRA, QLoRA, AdaLoRA, LoHa, LoKr, IA³, Prefix Tuning, P-Tuning v2), making it easy to compare performance across methods.
 
