@@ -12,14 +12,20 @@ on two major NLP tasks:
 2. **Classification :** [dair-ai/emotion dataset](https://huggingface.co/datasets/dair-ai/emotion)
 
 ## 🚀 Models & Hugging Face Links
-| Task            | Model               | PEFT Method | Link |
-|-----------------|--------------------|-------------|------|
-| Summarization   | FLAN-T5-XL          | AdaLoRA     | [HF Link](https://huggingface.co/...) |
-| Summarization   | LLaMA-3.2-3B        | LoKR        | [HF Link](https://huggingface.co/...) |
-| Classification  | FLAN-T5-XL          | IA³         | [HF Link](https://huggingface.co/...) |
-| Classification  | LLaMA-3.2-3B        | LoRA        | [HF Link](https://huggingface.co/...) |
+All fine-tuned checkpoints are organized task-wise. You can directly explore and download them from Hugging Face:
 
-> All other PEFT variants and configurations are listed in `results/`.
+**Summarization Models** 
+
+The model checkpoints for summarization (finetuning on the BillSum dataset) can be found here:
+👉 [Hugging Face – Summarization PEFT Models](https://huggingface.co/Abhinay123/summarization_peft_models)
+
+**Classification Models** 
+
+The model checkpoints for classification (trained on the dair-ai/emotion dataset) can be found here:
+👉 [Hugging Face – Summarization PEFT Models](https://huggingface.co/Abhinay123/classification_peft_models)
+
+Each folder within these repositories corresponds to a different PEFT technique (LoRA, QLoRA, AdaLoRA, LoHa, LoKr, IA³, Prefix Tuning, P-Tuning v2), making it easy to compare performance across methods.
+
 
 ## 📊 Key Results
 - **Summarization:** AdaLoRA on T5 achieved ROUGE-1 of **50.54**, training only **0.2478%** of parameters.
